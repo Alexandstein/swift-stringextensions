@@ -75,10 +75,9 @@
 		87BE8E141D15E458003F1899 /* StringExtensions */ = {
 			isa = PBXGroup;
 			children = (
-				87BE8E151D15E458003F1899 /* StringExtensions.h */,
 				87BE8E2C1D15E482003F1899 /* GeneralStringExtensions.swift */,
-				87BE8E171D15E458003F1899 /* Info.plist */,
 				87BE8E2F1D15E5ED003F1899 /* BasicRegexFunctionality.swift */,
+				87BE8E311D15FBDE003F1899 /* Other */,
 			);
 			path = StringExtensions;
 			sourceTree = "<group>";
@@ -90,6 +89,15 @@
 				87BE8E231D15E458003F1899 /* Info.plist */,
 			);
 			path = StringExtensionsTests;
+			sourceTree = "<group>";
+		};
+		87BE8E311D15FBDE003F1899 /* Other */ = {
+			isa = PBXGroup;
+			children = (
+				87BE8E171D15E458003F1899 /* Info.plist */,
+				87BE8E151D15E458003F1899 /* StringExtensions.h */,
+			);
+			name = Other;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

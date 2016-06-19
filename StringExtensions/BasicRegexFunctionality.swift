@@ -19,7 +19,7 @@ public extension String{
      - Returns: True if any matches are found.
      */
     public func hasMatch(pattern: String) -> Bool{
-        let matchArray = self.matches(pattern)
+        let matchArray = self.matches(withPattern: pattern)
         
         return matchArray.count > 0;
     }
@@ -32,22 +32,20 @@ public extension String{
      
      - Returns: An array populated with the string results, if any.
      */
-    public func matches(pattern: String) -> [String]!{
+    public func matches(withPattern pattern: String) -> [String]!{
         
         var matches : [String]! = []
         let nsRegex = try? NSRegularExpression(pattern: pattern, options: [])
         let rawMatchInfo = nsRegex?.matchesInString(self, options: [], range: NSRange(location: 0, length: self.utf16.count))
         
         for result in rawMatchInfo!{
-            //Get substring
-            let substringBegin = self.startIndex.advancedBy(result.range.location)
-            let substringEnd = substringBegin.advancedBy(result.range.length)
+            let substringStart = result.range.location
+            let substringLength = result.range.length
             
-            let resultsRange = substringBegin..<substringEnd
-            let stringMatch = self.substringWithRange(resultsRange)
-            
+            //Use substring subscript from StringExtensions.swift to get result to append
+            let stringMatch = self[substringStart, substringLength]
             matches.append(stringMatch)
-        }
+       }
         
         return matches
     }
@@ -60,14 +58,9 @@ public extension String{
      - Returns: The first matched string, or nil if no matches
      */
     public func matchFirst(pattern: String) -> String?{
-        let allMatches = self.matches(pattern)
+        let allMatches = self.matches(withPattern: pattern)
         let firstMatch : String? = allMatches.count > 0 ? allMatches[0] : nil
         
         return firstMatch
     }
 }
-
-
-
-
-

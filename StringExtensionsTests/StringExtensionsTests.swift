@@ -24,18 +24,16 @@ class StringExtensionsTests: XCTestCase {
         super.tearDown()
     }
     
-    func test_subscriptSubstring_onAlphabet_cdef(){
+    func test_subscriptIntSubstring_onAlphabet_cdef(){
         let expectedResult = "cdef"
         let actualResult = alphabetString[2,4]
         
         XCTAssert(expectedResult == actualResult)
     }
     
-    func test_subscriptSubstring_onAlphabet_indexOutOfBounds_Nil(){
+    func test_subscriptIntRangeSubstring_onAlphabet_indexOutOfBounds_Nil(){
         XCTAssertNil(alphabetString[10,100])
-        
     }
-    
     
     func test_hasMatch_onAlphabet_true() {
         // This is an example of a functional test case.
@@ -66,7 +64,7 @@ class StringExtensionsTests: XCTestCase {
         var actualResult : Int!
         let pattern = "it"
         
-        let matches = lorumIpsum.matches(pattern)
+        let matches = lorumIpsum.matches(withPattern: pattern)
         actualResult = matches.count
         
         XCTAssert(expectedResult == actualResult)
@@ -86,6 +84,7 @@ class StringExtensionsTests: XCTestCase {
         // This is an example of a performance test case.
         self.measureBlock {
             // Put the code you want to measure the time of here.
+            self.test_matches_onLorumIpsum_2()
         }
 
     }
