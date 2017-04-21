@@ -64,7 +64,7 @@ class StringExtensionsTests: XCTestCase {
         var actualResult : Int!
         let pattern = "it"
         
-        let matches = lorumIpsum.matches(withPattern: pattern)
+        let matches = lorumIpsum.matches(withPattern: pattern)!
         actualResult = matches.count
         
         XCTAssert(expectedResult == actualResult)
@@ -82,7 +82,7 @@ class StringExtensionsTests: XCTestCase {
     
     func testPerformanceExample() {
         // This is an example of a performance test case.
-        self.measureBlock {
+        self.measure {
             // Put the code you want to measure the time of here.
             self.test_matches_onLorumIpsum_2()
         }
